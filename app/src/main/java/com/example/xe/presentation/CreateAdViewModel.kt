@@ -46,8 +46,8 @@ class CreateAdViewModel @Inject constructor(
             .debounce(500L)
             .filter { (it.length > 2) }
             .flowOn(Dispatchers.IO)
-            .onEach { cityPrefix ->
-                getLocations(cityPrefix)
+            .onEach { locationPrefix ->
+                getLocations(locationPrefix.trim())
             }
             .launchIn(viewModelScope)
         _userInput.debounce(0).flowOn(Dispatchers.IO).launchIn(viewModelScope)
